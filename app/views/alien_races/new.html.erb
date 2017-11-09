@@ -1,0 +1,32 @@
+<% if @alien_race.errors.any? %>
+	<ul>
+	<% @alien_race.errors.full_messages.each do |error| %>
+		<li><%= error %></li>
+	<% end %>
+	</ul>
+<% end %>
+
+<%= form_for @alien_race do |f| %>
+	<%= f.label :name %>
+	<br>
+	<%= f.text_field :name %>
+	<br>	
+
+	<%= f.label :biome %>
+	<br>
+	<%= f.text_field :biome %>
+	<br>	
+
+	<%= f.label :demeanor %>
+	<br>
+	<%= f.text_field :demeanor %>
+	<br>
+
+	<%= f.label :description  %>
+	<br>
+	<%= f.text_area :description  %>
+	<br>
+
+	<%= f.submit %>	
+
+<% end %>

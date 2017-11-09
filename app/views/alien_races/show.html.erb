@@ -1,0 +1,23 @@
+<h1><%= @alien_race.name %></h1>
+
+<p>Biome: <%= @alien_race.biome %></p>
+<p>Demeanor: <%= @alien_race.demeanor %></p>
+<p>Description: <%= @alien_race.description %></p>
+
+
+<h1>Populations</h1>
+<% @alien_race.populations.each do |pop| %>
+	<p>Planet: <%= pop.planet.name %></p>
+	<p>Size: <%= pop.size %></p>
+	<p>Extinct: <%= pop.extinct %></p>
+	
+<% end %>
+
+<%= form_for :populations, url: populations_path do |f| %>
+	<%= f.label :size %>
+	<%= f.number_field :size %>
+	<%= f.collection_select :planet_id, Planet.all, :id, :name %>
+	<%= f.hidden_field :alien_race_id, value: @alien_race.id %>
+	<%= f.submit %>
+
+<% end %>
